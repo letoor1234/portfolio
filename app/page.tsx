@@ -1,4 +1,6 @@
-import data from "./api/data/data.json";
+"use client";
+
+import { useEffect, useState } from "react";
 
 type SkillGroups = {
   frontend: string[];
@@ -21,10 +23,79 @@ type Contact = {
   upwork: string;
 };
 
+type PortfolioData = {
+  title: string;
+  description: string;
+  banner: string;
+  author: string;
+  skills: SkillGroups;
+  softSkills: string[];
+  projects: Project[];
+  contact: Contact;
+  resume: string;
+};
+
 export default function Home() {
-  const skills = data.skills as SkillGroups;
-  const projects = data.projects as Project[];
-  const contact = data.contact as Contact;
+  const [data, setData] = useState<PortfolioData | null>(null);
+  const [loadError, setLoadError] = useState<string | null>(null);
+
+  useEffect(() => {
+    let isCancelled = false;
+
+    const loadData = async () => {
+      try {
+        const response = await fetch("/data/data.json", {
+          cache: "force-cache",
+        });
+
+        if (!response.ok) {
+          throw new Error(`Failed to load data.json (${response.status})`);
+        }
+
+        const payload = (await response.json()) as PortfolioData;
+
+        if (!isCancelled) {
+          setData(payload);
+        }
+      } catch {
+        if (!isCancelled) {
+          setLoadError(
+            "Unable to load portfolio data. Please try again later.",
+          );
+        }
+      }
+    };
+
+    loadData();
+
+    return () => {
+      isCancelled = true;
+    };
+  }, []);
+
+  if (loadError) {
+    return (
+      <main className="mx-auto w-full max-w-3xl px-6 py-16 sm:px-10">
+        <div className="rounded-2xl border border-red-400/30 bg-red-950/40 p-6 text-red-100">
+          {loadError}
+        </div>
+      </main>
+    );
+  }
+
+  if (!data) {
+    return (
+      <main className="mx-auto w-full max-w-3xl px-6 py-16 sm:px-10">
+        <div className="glass-panel rounded-2xl p-6 text-zinc-200">
+          Loading...
+        </div>
+      </main>
+    );
+  }
+
+  const skills = data.skills;
+  const projects = data.projects;
+  const contact = data.contact;
 
   const skillSections = [
     { title: "Frontend", list: skills.frontend },
