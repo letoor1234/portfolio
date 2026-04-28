@@ -1,0 +1,106 @@
+{
+  "title": "Martinez Web Dev",
+  "description": "Full-stack developer specializing in scalable web applications, real-time systems, and AI-powered experiences.",
+  "banner": "I design and build high-performance digital products, combining modern frontend frameworks, robust backend architectures, and intelligent systems to deliver seamless user experiences.",
+  "author": "Angel Martinez",
+  "skills": {
+    "frontend": [
+      "React.js",
+      "Next.js",
+      "TypeScript",
+      "HTML5",
+      "CSS3",
+      "Tailwind CSS",
+      "Material UI",
+      "shadcn/ui",
+      "Vibecode"
+    ],
+    "backend": [
+      "Node.js",
+      "Express.js",
+      "WebSockets",
+      "MongoDB",
+      "PostgreSQL",
+      "MySQL",
+      "DynamoDB",
+      "AWS Lambda",
+      "Amazon Cognito",
+      "Supabase"
+    ],
+    "devOps": [
+      "Docker",
+      "Docker Compose",
+      "AWS",
+      "Git",
+      "GitHub",
+      "GitLab",
+      "CI/CD Pipelines"
+    ],
+    "methodologies": ["Agile Development", "RESTful API Design"]
+  },
+  "softSkills": [
+    "Problem Solving",
+    "Critical Thinking",
+    "Clear Communication",
+    "Team Collaboration",
+    "Adaptability",
+    "Time Management",
+    "Creativity",
+    "Attention to Detail",
+    "Leadership"
+  ],
+  "projects": [
+    {
+      "name": "miniExtensions",
+      "description": "Platform that enables users to build and share lightweight web applications connected to Airtable through a simplified configuration interface. Designed for rapid creation of productivity tools, portals, and integrations without deep technical overhead.",
+      "technologies": [
+        "Next.js",
+        "TypeScript",
+        "Redis",
+        "Firestore",
+        "Vibecode",
+        "Prompt Engineering"
+      ],
+      "link": "https://miniextensions.com/"
+    },
+    {
+      "name": "Qualiphy",
+      "description": "Good Faith Exam platform that provides a secure and compliant environment for nurses to conduct remote patient evaluations, including identity verification, controlled exam workflows, and real-time result processing.",
+      "technologies": ["Next.js", "TypeScript", "WebSockets"],
+      "link": "https://qualiphy.com/"
+    },
+    {
+      "name": "PolyChat",
+      "description": "AI-powered language learning platform delivering personalized learning experiences through interactive conversations, real-time feedback, and adaptive content.",
+      "technologies": [
+        "React Native",
+        "TypeScript",
+        "Express.js",
+        "Amazon Cognito",
+        "DynamoDB",
+        "AWS Lambda"
+      ],
+      "link": "https://polychatapp.com/"
+    },
+    {
+      "name": "BallHog Sports",
+      "description": "Progressive Web App that allows sports bar owners to create and manage real-time betting-style games based on live sports events.",
+      "technologies": [
+        "Next.js",
+        "TypeScript",
+        "WebSockets",
+        "Supabase",
+        "Vibecode",
+        "ESPN API"
+      ],
+      "link": "https://ballhogsports.com/"
+    }
+  ],
+  "contact": {
+    "email": "angelmartinezwb@gmail.com",
+    "linkedin": "https://www.linkedin.com/in/angel-martinez-wb/",
+    "github": "https://github.com/letoor1234",
+    "upwork": "https://www.upwork.com/freelancers/~013bf46934c7da9e16"
+  },
+  "resume": "https://docs.google.com/document/d/1zwrmdSK-1paYKma4UrZ72FXQokWvvlsp2fkOiB-rsFo/edit?usp=sharing"
+}

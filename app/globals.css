@@ -1,26 +1,206 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #05070d;
+  --foreground: #e5e7eb;
+  --surface-1: rgba(11, 15, 25, 0.72);
+  --surface-2: rgba(13, 18, 31, 0.88);
+  --surface-3: rgba(12, 18, 31, 0.92);
+  --line: rgba(255, 255, 255, 0.09);
+  --accent: #67e8f9;
+  --accent-strong: #22d3ee;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-manrope);
+  --font-mono: var(--font-ibm-plex-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+html {
+  scroll-behavior: smooth;
+}
+
+section[id] {
+  scroll-margin-top: 6.5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-manrope), sans-serif;
+  line-height: 1.5;
+  text-rendering: optimizeLegibility;
+}
+
+.font-display {
+  font-family: var(--font-display), sans-serif;
+  letter-spacing: -0.02em;
+}
+
+.background-mesh {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle at 10% 8%, rgba(34, 211, 238, 0.2), transparent 32%),
+    radial-gradient(
+      circle at 84% 12%,
+      rgba(103, 232, 249, 0.14),
+      transparent 38%
+    ),
+    radial-gradient(circle at 50% 100%, rgba(12, 18, 37, 0.7), transparent 58%),
+    linear-gradient(150deg, #04060b 0%, #090d19 48%, #04060b 100%);
+}
+
+.background-mesh::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 42px 42px;
+  mask-image: radial-gradient(circle at center, black 35%, transparent 95%);
+}
+
+.glass-panel {
+  background: linear-gradient(140deg, var(--surface-1), var(--surface-2));
+  border: 1px solid var(--line);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(8px);
+}
+
+.glass-panel,
+.project-card,
+.contact-panel {
+  position: relative;
+}
+
+.glass-panel::before,
+.project-card::before,
+.contact-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(
+    130deg,
+    rgba(103, 232, 249, 0.16),
+    transparent 24%,
+    transparent 72%,
+    rgba(255, 255, 255, 0.05)
+  );
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  padding: 1px;
+}
+
+.project-card {
+  background: linear-gradient(
+    155deg,
+    rgba(16, 23, 40, 0.9),
+    rgba(8, 11, 20, 0.92)
+  );
+  transition:
+    border-color 180ms ease,
+    transform 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.project-card:hover {
+  border-color: rgba(103, 232, 249, 0.45);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(8, 145, 178, 0.2);
+}
+
+.contact-panel {
+  background: linear-gradient(
+    150deg,
+    rgba(13, 21, 36, 0.94),
+    rgba(9, 13, 23, 0.95)
+  );
+  box-shadow: 0 20px 54px rgba(0, 0, 0, 0.42);
+}
+
+.contact-link {
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    background-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.contact-link:hover {
+  transform: translateY(-2px);
+  border-color: rgba(103, 232, 249, 0.45);
+  box-shadow: 0 10px 28px rgba(8, 145, 178, 0.18);
+}
+
+.download-cv {
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    background-color 180ms ease;
+}
+
+.download-cv:hover {
+  transform: translateY(-1px);
+  border-color: rgba(103, 232, 249, 0.55);
+  background-color: rgba(103, 232, 249, 0.16);
+  box-shadow: 0 8px 24px rgba(8, 145, 178, 0.22);
+}
+
+.nav-link {
+  position: relative;
+  transition: color 140ms ease;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  transform: scaleX(0.32);
+  opacity: 0;
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease;
+}
+
+.nav-link:hover {
+  color: #ecfeff;
+}
+
+.nav-link:hover::after {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(12px);
+  animation: rise-in 700ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes rise-in {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
